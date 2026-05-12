@@ -1,0 +1,97 @@
+ai_analysis:
+  enabled: false
+  provider: openai
+  api_base: https://api.openai.com/v1
+  api_key: ''
+  model: gpt-5.4
+  temperature: 0.3
+  max_tokens: 4096
+analysis:
+  batch_size: 10000
+  dynamic_threshold:
+    enabled: true
+    learning_margin: 1.15
+    min_flow_packets: 20
+    min_window_packets: 20
+    min_windows: 3
+    std_multiplier: 2
+    window_seconds: 10
+  max_memory_mb: 1024
+  memory_packet_bytes_estimate: 350
+  quick_ip_guard:
+    adaptive_max_packets: 300000
+    adaptive_min_packets: 80000
+    adaptive_packets_per_mb: 1200
+    enabled: true
+    file_size_mb_warn: 500
+    max_packets: 200000
+  tcp_payload_backfill:
+    enabled: false
+  thresholds:
+    arp_min_packets: 30
+    arp_storm_rate_pps: 60.0
+    arp_storm_window_packets: 200
+    asymmetry_ratio: 10
+    broadcast_rate: 1000
+    connection_leak_duration_s: 120.0
+    connection_leak_min_packets: 30
+    dns_failure_rate: 0.05
+    dns_latency_high_ms: 200
+    half_open_flows: 50
+    handshake_ack_high_ms: 300
+    handshake_synack_high_ms: 300
+    http_error_rate: 0.1
+    http_ttfb_high_ms: 800
+    max_interval_s: 5.0
+    pmtud_icmp_frag_needed_threshold: 3
+    pmtud_retrans_rate_threshold: 0.05
+    pmtud_suspect_flow_threshold: 2
+    port_scan_syn_count: 100
+    port_scan_syn_ratio: 0.8
+    quick_disconnect_s: 2.0
+    retransmission_rate: 0.05
+    rst_rate: 0.02
+    rtt_high_ms: 500
+    rtt_jitter_cv_high: 0.6
+    syn_retry_flow_threshold: 3
+    syn_retry_min_count: 3
+    throughput_jitter_cv_high: 0.8
+    traffic_burst_min_pps: 120.0
+    traffic_burst_min_windows: 1
+    traffic_burst_ratio: 2.5
+    window_full_flow_ratio: 0.1
+    window_full_threshold: 30
+    zero_window_threshold: 10
+  timeout_seconds: 3600
+history:
+  enabled: true
+  max_records: 50
+  storage_file: history.json
+logging:
+  backup_count: 5
+  file: logs/analyzer.log
+  level: INFO
+  max_size_mb: 10
+plugins:
+  auto_load: true
+  directory: plugins
+  enabled: true
+report:
+  default_format: html
+  formats:
+  - html
+  - markdown
+  - json
+  include_charts: true
+  output_dir: reports
+  plotly_js_mode: inline
+  top_n: 10
+tshark:
+  custom_paths:
+  - C:\Program Files\Wireshark\tshark.exe
+  - C:\Program Files (x86)\Wireshark\tshark.exe
+  - D:\Wireshark\tshark.exe
+  - D:\Program Files\Wireshark\tshark.exe
+  - D:\Program Files (x86)\Wireshark\tshark.exe
+  - E:\Wireshark\tshark.exe
+  path: ''
